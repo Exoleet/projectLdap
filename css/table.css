@@ -1,0 +1,32 @@
+table {
+    border-collapse: collapse;
+    margin: auto;
+    width: calc(100% - 2%)
+}
+
+tr {
+    transition: .4s ease;
+}
+
+ tr:nth-of-type(odd)>td {
+    background-color: rgba(216, 208, 191, .3);
+}
+
+tr:nth-of-type(odd):hover>td {
+    background-color: #D8D0B7;
+}
+
+ tbody > tr:nth-of-type(even):hover>td {
+    background-color: rgba(216, 208, 191, .6);
+}
+
+ td {
+   /* padding: 0 1em;*/
+    line-height: 2em;
+    text-align: center;
+}
+
+th{
+    padding:10px 0;
+    background-color: rgba(216, 208, 191, .6);
+}

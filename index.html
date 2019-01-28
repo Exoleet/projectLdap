@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <link rel="stylesheet" href="css/index.css"/>
+    <title>Connection LDAP</title>
+</head>
+<body>
+    <article>
+        <form action="ldapConnection.php" method="get" autocomplete="on">
+            <input id="_input_login" name="login" type="text" required placeholder="Identifiant"/>
+            <input id="_input_password" name="password" type="password" required placeholder="Mot de passe"/>
+            <button id="_btn_submit">Login</button>
+            <script>
+                _btn_submit.addEventListener('click', function (e){
+                    if(_input_login.value === '' || _input_password.value === ''){
+                        e.prevendDefault();
+                        e.stopPropagation();
+                    }
+                });
+            </script>
+        </form>
+
+    </article>
+
+</body>
+</html>
