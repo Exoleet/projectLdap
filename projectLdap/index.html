@@ -3,13 +3,17 @@
 <head>
     <link rel="stylesheet" href="css/index.css"/>
     <title>Connection LDAP</title>
+    <style>
+        @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+        @import 'https://use.fontawesome.com/releases/v5.6.0/css/all.css';
+    </style>
 </head>
 <body>
     <article>
         <form action="ldapConnection.php" method="get" autocomplete="on">
-            <input id="_input_login" name="login" type="text" required placeholder="Identifiant"/>
-            <input id="_input_password" name="password" type="password" required placeholder="Mot de passe"/>
-            <button id="_btn_submit">Login</button>
+            <input class="form-control" id="_input_login" name="login" type="text" required placeholder="Identifiant"/>
+            <input class="form-control" id="_input_password" name="password" type="password" required placeholder="Mot de passe"/>
+            <button class="btn btn-primary" id="_btn_submit">Login</button>
             <script>
                 _btn_submit.addEventListener('click', function (e){
                     if(_input_login.value === '' || _input_password.value === ''){
@@ -19,8 +23,10 @@
                 });
             </script>
         </form>
-
     </article>
-
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

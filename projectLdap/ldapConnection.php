@@ -10,6 +10,8 @@ session_start();
         $ldaptree  = "OU=people,DC=bla,DC=com";
     }else{
        $dn = 'uid='. $login . ',ou=people,dc=bla,dc=com';
+       $ldaptree  = "OU=people,DC=bla,DC=com";
+       $ldapfilter = "(|sn=$login)(uid=$login))";
     }
 
 ini_set('display_errors','On');
@@ -26,7 +28,12 @@ if ($ldapconn) {
 
     // Connexion au serveur LDAP
     $ldapbind = ldap_bind($ldapconn, $ldaprdn, $ldappass);
-    $result = ldap_search($ldapconn,$ldaptree, "(cn=*)") or die ("Error in search query: ".ldap_error($ldapconn));
+    if($login == 'admin'){
+        $result = ldap_search($ldapconn,$ldaptree, "(cn=*)") or die ("Error in search query: ".ldap_error($ldapconn));
+    }else{
+        $result =ldap_search($ldapconn, "ou=people, dc=bla, dc=com", "uid=".$login); 
+    }
+    
     $data = ldap_get_entries($ldapconn, $result);
 
     // Vérification de l'authentification
@@ -36,8 +43,11 @@ if ($ldapconn) {
         $_SESSION['userData'] = $data;
         $_SESSION['uid'] = $login;
         
-
-        header('location:user.php');
+        if($login == 'admin'){
+            header('location:userlist.php');
+        }else{
+            header('location:user.php');
+        }
     } else {
         echo "Connexion LDAP échouée...";
     }
