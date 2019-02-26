@@ -8,6 +8,9 @@ session_start();
     if($login == 'admin'){
         $dn = 'cn=admin,dc=bla,dc=com';
         $ldaptree  = "OU=people,DC=bla,DC=com";
+        $ldaptreegrp  = "OU=group,DC=bla,DC=com";
+        $filter = "(OU=*)";
+        $attr = array("OU","CN","DC");
     }else{
        $dn = 'uid='. $login . ',ou=people,dc=bla,dc=com';
        $ldaptree  = "OU=people,DC=bla,DC=com";
@@ -29,7 +32,10 @@ if ($ldapconn) {
     // Connexion au serveur LDAP
     $ldapbind = ldap_bind($ldapconn, $ldaprdn, $ldappass);
     if($login == 'admin'){
-        $result = ldap_search($ldapconn,$ldaptree, "(cn=*)") or die ("Error in search query: ".ldap_error($ldapconn));
+        $result = ldap_search($ldapconn,$ldaptree, "(uid=*)") or die ("Error in search query: ".ldap_error($ldapconn));
+        $grp = ldap_search($ldapconn,$ldaptreegrp,"(cn=*)");
+        $rescount = ldap_count_entries($ldapconn,$grp);
+        $datagrp = ldap_get_entries($ldapconn,$grp); 
     }else{
         $result =ldap_search($ldapconn, "ou=people, dc=bla, dc=com", "uid=".$login); 
     }
@@ -42,7 +48,8 @@ if ($ldapconn) {
         // iterate over array and print data for each entry
         $_SESSION['userData'] = $data;
         $_SESSION['uid'] = $login;
-        
+        $_SESSION['grpData'] = $datagrp;
+
         if($login == 'admin'){
             header('location:userlist.php');
         }else{

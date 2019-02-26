@@ -28,7 +28,7 @@ session_start();
             <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label">Uid</label>
                 <div class="col-lg-9">
-                    <input class="form-control" type="text" value="<?php echo $data[0]["uid"][0]; ?>">
+                    <input class="form-control" type="text" value="<?php echo $data[0]["uid"][0]; ?>" readonly>
                 </div>
             </div>
             <div class="form-group row">

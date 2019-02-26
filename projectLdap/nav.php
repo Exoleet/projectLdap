@@ -10,10 +10,10 @@
 
                 echo '<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Liste des groupes <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="grplist.php">Liste des groupes <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Liste des utilisateurs</a>
+                        <a class="nav-link" href="userlist.php">Liste des utilisateurs</a>
                     </li>
                 </ul>';
             }else{
