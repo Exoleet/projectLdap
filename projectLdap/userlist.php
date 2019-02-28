@@ -9,6 +9,7 @@ session_start();
         @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
         @import 'https://use.fontawesome.com/releases/v5.6.0/css/all.css';
     </style>
+    <script src="js/ajax/add.js" defer></script>
 </head>
 <body>
     <?php require 'nav.php' ?>
